@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -13,10 +14,34 @@ import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import GihubSignInBtn from "./GihubSignInBtn";
+import axios from "axios";
+import { loginWithCreds } from "@/actions/auth.action";
 
 type Props = {};
 
 const SignUpTab = (props: Props) => {
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handleSignUp = async () => {
+		try {
+			const res = await axios.post("/api/register", {
+				name,
+				email,
+				password,
+			});
+
+			if (res.data) {
+				console.log(res.data);
+			}
+
+			await loginWithCreds(email, password);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<TabsContent value="sign-up">
 			<Card>
@@ -29,11 +54,12 @@ const SignUpTab = (props: Props) => {
 				</CardHeader>
 				<CardContent className="space-y-2">
 					<div className="space-y-1">
-						<Label htmlFor="username">User name</Label>
+						<Label htmlFor="name">Name</Label>
 						<Input
-							id="username"
+							id="name"
 							placeholder="Pedro Duarte"
 							type="text"
+							onChange={(e) => setName(e.target.value)}
 						/>
 					</div>
 					<div className="space-y-1">
@@ -42,6 +68,7 @@ const SignUpTab = (props: Props) => {
 							id="email"
 							placeholder="PedroDuarte@xyz.com"
 							type="email"
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</div>
 					<div className="space-y-1">
@@ -50,11 +77,14 @@ const SignUpTab = (props: Props) => {
 							id="password"
 							placeholder="@peduarte"
 							type="password"
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 					</div>
 				</CardContent>
 				<CardFooter className="flex flex-col gap-6">
-					<Button className="w-full">Sign Up</Button>
+					<Button className="w-full" onClick={handleSignUp}>
+						Sign Up
+					</Button>
 					<Separator />
 					<GihubSignInBtn />
 				</CardFooter>

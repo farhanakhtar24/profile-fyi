@@ -4,8 +4,9 @@ import { signIn, signOut } from "@/auth";
 import { db } from "@/db";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
+import axios from "axios";
 
-const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (email: string) => {
 	try {
 		const user = await db.user.findUnique({
 			where: {
@@ -14,7 +15,7 @@ const getUserByEmail = async (email: string) => {
 		});
 		return user;
 	} catch (error) {
-		console.log(error);
+		// console.log(error);
 		return null;
 	}
 };
@@ -34,6 +35,10 @@ export const logout = async () => {
 export const loginWithCreds = async (email: string, password: string) => {
 	const existingUser = await getUserByEmail(email);
 	console.log(existingUser);
+
+	if (!existingUser) {
+		return { error: "User does not exist!" };
+	}
 
 	try {
 		await signIn("credentials", {
