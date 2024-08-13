@@ -17,20 +17,20 @@ export const {
 			clientId: process.env.GITHUB_ID,
 			clientSecret: process.env.GITHUB_SECRET,
 		}),
-		Credentials({
-			async authorize(credentials) {
-				const user = await PrismaAdapter.user.findFirst({
-					where: { email: credentials.email },
-				});
-				if (
-					user &&
-					bcrypt.compareSync(credentials.password, user.password)
-				) {
-					return user;
-				}
-				return null;
-			},
-		}),
+		// Credentials({
+		// 	async authorize(credentials) {
+		// 		const user = await PrismaAdapter.user.findFirst({
+		// 			where: { email: credentials.email },
+		// 		});
+		// 		if (
+		// 			user &&
+		// 			bcrypt.compareSync(credentials.password, user.password)
+		// 		) {
+		// 			return user;
+		// 		}
+		// 		return null;
+		// 	},
+		// }),
 	],
 	session: {
 		strategy: "jwt",
