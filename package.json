@@ -12,6 +12,9 @@
     "@auth/mongodb-adapter": "^3.4.2",
     "@auth/prisma-adapter": "^2.4.2",
     "@prisma/client": "^5.18.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^2.4.3",
@@ -23,6 +26,7 @@
     "next-auth": "^5.0.0-beta.20",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.3.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
