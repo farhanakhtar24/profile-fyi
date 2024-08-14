@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SessionContext from "@/context/SessionContext";
 import Navbar from "@/components/ui/Navbar/Navbar";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
 			<html lang="en">
 				<body className={inter.className}>
 					<Navbar />
+					<NextTopLoader />
 					<div className="mx-auto max-w-screen-lg h-[89vh] flex flex-col">
 						{children}
 					</div>
