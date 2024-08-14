@@ -20,8 +20,8 @@ export default function RootLayout({
 		<SessionContext>
 			<html lang="en">
 				<body className={inter.className}>
-					<div className="mx-auto max-w-screen-lg h-screen flex flex-col">
-						<Navbar />
+					<Navbar />
+					<div className="mx-auto max-w-screen-lg h-[90vh] flex flex-col">
 						{children}
 					</div>
 				</body>
