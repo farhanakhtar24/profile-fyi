@@ -12,8 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
-import axios from "axios";
-import { loginWithCreds } from "@/actions/auth.action";
+import { signUp } from "@/actions/post/signUp.action";
 
 type Props = {};
 
@@ -23,21 +22,7 @@ const SignUpTab = (props: Props) => {
 	const [password, setPassword] = useState("");
 
 	const handleSignUp = async () => {
-		try {
-			const res = await axios.post("/api/register", {
-				name,
-				email,
-				password,
-			});
-
-			if (res.data) {
-				console.log(res.data);
-			}
-
-			await loginWithCreds(email, password);
-		} catch (error) {
-			console.log(error);
-		}
+		await signUp(name, email, password);
 	};
 
 	return (

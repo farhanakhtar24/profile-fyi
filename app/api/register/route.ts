@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { saltAndHashPassword } from "@/utils/helper";
 import { db } from "@/db";
-import { getUserByEmail } from "@/actions/auth.action";
+import { getUserByEmail } from "@/actions/get/getUserByEmail.action";
 
 export async function POST(request: Request) {
 	const body = await request.json();
@@ -12,15 +12,14 @@ export async function POST(request: Request) {
 
 	if (user) {
 		return NextResponse.json({
-			user,
-			error: "User already exists!",
+			message: "User already exists!",
 			status: 400,
 		});
 	}
 
 	const hashedPassword = saltAndHashPassword(password);
 
-	const newUser = await db.user.create({
+	await db.user.create({
 		data: {
 			email,
 			name,
@@ -28,5 +27,8 @@ export async function POST(request: Request) {
 		},
 	});
 
-	return NextResponse.json(newUser);
+	return NextResponse.json({
+		status: 200,
+		message: "User created successfully!",
+	});
 }

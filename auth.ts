@@ -4,7 +4,7 @@ import Github from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { db } from "./db";
-import { getUserByEmail } from "./actions/auth.action";
+import { getUserByEmail } from "./actions/get/getUserByEmail.action";
 
 export const {
 	handlers: { GET, POST },
