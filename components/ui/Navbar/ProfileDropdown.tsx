@@ -9,7 +9,6 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import LogoutBtn from "./LogoutBtn";
 import { logout } from "@/actions/auth.action";
 
 type Props = {
@@ -22,7 +21,7 @@ const ProfileDropdown = ({ name, imgUrl }: Props) => {
 		<DropdownMenu>
 			<DropdownMenuTrigger>
 				<div className="flex items-center gap-x-2 text-sm">
-					<Avatar>
+					<Avatar className="border border-slate-700">
 						<AvatarImage src={imgUrl ?? ""} />
 						<AvatarFallback>
 							{name
@@ -39,7 +38,7 @@ const ProfileDropdown = ({ name, imgUrl }: Props) => {
 				<DropdownMenuItem
 					onClick={() => logout()}
 					className="cursor-pointer">
-					Logout{" "}
+					Logout
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

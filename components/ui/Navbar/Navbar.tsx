@@ -1,7 +1,5 @@
 import { auth } from "@/auth";
 import Link from "next/link";
-import LogoutBtn from "./LogoutBtn";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "../button";
 import logo from "@/public/Screenshot from 2024-08-14 19-43-39.png";
 import Image from "next/image";

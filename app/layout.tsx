@@ -21,7 +21,7 @@ export default function RootLayout({
 			<html lang="en">
 				<body className={inter.className}>
 					<Navbar />
-					<div className="mx-auto max-w-screen-lg h-[90vh] flex flex-col">
+					<div className="mx-auto max-w-screen-lg h-[89vh] flex flex-col">
 						{children}
 					</div>
 				</body>

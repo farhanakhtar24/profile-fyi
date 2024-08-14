@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { getUserByEmail } from "./get/getUserByEmail.action";
 
 export const login = async (provider: string) => {
-	await signIn(provider, { redirectTo: "/middleware" });
+	await signIn(provider, { redirectTo: "/" });
 	revalidatePath("/");
 };
 
@@ -28,7 +28,7 @@ export const loginWithCreds = async (email: string, password: string) => {
 		await signIn("credentials", {
 			email,
 			password,
-			redirectTo: "/middleware",
+			redirectTo: "/",
 		});
 	} catch (error: any) {
 		if (error instanceof AuthError) {

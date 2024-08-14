@@ -74,4 +74,5 @@ export const {
 			return token;
 		},
 	},
+	trustHost: true, // Add this option to trust the localhost
 });
