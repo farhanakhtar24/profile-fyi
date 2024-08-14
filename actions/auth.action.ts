@@ -4,7 +4,6 @@ import { signIn, signOut } from "@/auth";
 import { db } from "@/db";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-import axios from "axios";
 
 export const getUserByEmail = async (email: string) => {
 	try {
@@ -21,7 +20,7 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const login = async (provider: string) => {
-	await signIn(provider, { redirectTo: "/" });
+	await signIn(provider, { redirectTo: "/middleware" });
 	revalidatePath("/");
 };
 
@@ -44,7 +43,7 @@ export const loginWithCreds = async (email: string, password: string) => {
 		await signIn("credentials", {
 			email,
 			password,
-			redirectTo: "/",
+			redirectTo: "/middleware",
 		});
 	} catch (error: any) {
 		if (error instanceof AuthError) {

@@ -12,8 +12,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
-import GihubSignInBtn from "./GihubSignInBtn";
 import axios from "axios";
 import { loginWithCreds } from "@/actions/auth.action";
 
@@ -85,8 +83,6 @@ const SignUpTab = (props: Props) => {
 					<Button className="w-full" onClick={handleSignUp}>
 						Sign Up
 					</Button>
-					<Separator />
-					<GihubSignInBtn />
 				</CardFooter>
 			</Card>
 		</TabsContent>
