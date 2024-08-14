@@ -4,7 +4,6 @@ import Github from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { db } from "./db";
-import { saltAndHashPassword } from "./utils/helper";
 import { getUserByEmail } from "./actions/auth.action";
 
 export const {
@@ -60,5 +59,19 @@ export const {
 	],
 	session: {
 		strategy: "jwt",
+	},
+	callbacks: {
+		session: async ({ session, token }) => {
+			if (session?.user && token?.sub) {
+				session.user.id = token.sub; // token.uid or token.sub both work
+			}
+			return session;
+		},
+		jwt: async ({ user, token }) => {
+			if (user) {
+				token.sub = user.id; // token.uid or token.sub both work
+			}
+			return token;
+		},
 	},
 });
