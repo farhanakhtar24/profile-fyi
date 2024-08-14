@@ -21,8 +21,8 @@ export default function RootLayout({
 		<SessionContext>
 			<html lang="en">
 				<body className={inter.className}>
-					<Navbar />
 					<NextTopLoader />
+					<Navbar />
 					<div className="mx-auto max-w-screen-lg h-[89vh] flex flex-col">
 						{children}
 					</div>

@@ -1,5 +1,5 @@
-import { getAllProducts } from "@/actions/get/getAllProducts";
 import React from "react";
+import { getAllProducts } from "@/actions/get/getAllProducts";
 
 type Props = {};
 
