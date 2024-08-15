@@ -21,9 +21,6 @@ const Navbar = async () => {
         </Link>
 
         <div className="flex items-center gap-x-5">
-          <Link href="/product/category" className="font-semibold">
-            Categories
-          </Link>
           {!session?.user ? (
             <Link href="/auth">
               <Button className="bg-blue-600 text-white hover:bg-blue-500">
@@ -31,10 +28,18 @@ const Navbar = async () => {
               </Button>
             </Link>
           ) : (
-            <ProfileDropdown
-              name={session?.user?.name}
-              imgUrl={session?.user?.image}
-            />
+            <>
+              <Link href="/product/category" className="font-semibold">
+                Categories
+              </Link>
+              <Link href="/product" className="font-semibold">
+                Products
+              </Link>
+              <ProfileDropdown
+                name={session?.user?.name}
+                imgUrl={session?.user?.image}
+              />
+            </>
           )}
         </div>
       </div>
