@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SessionContext from "@/context/SessionContext";
-import Navbar from "@/components/ui/Navbar/Navbar";
 import NextTopLoader from "nextjs-toploader";
+import Navbar from "@/components/Navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 

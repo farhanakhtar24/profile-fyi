@@ -50,7 +50,7 @@ const ProductCard = ({ product }: Props) => {
           </CardContent>
           <CardFooter>
             {stock ? (
-              <AddToCartBtn />
+              <AddToCartBtn productId={id} />
             ) : (
               <p className="my-2 text-red-500">Out of Stock</p>
             )}
