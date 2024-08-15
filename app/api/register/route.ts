@@ -1,34 +1,39 @@
-import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { saltAndHashPassword } from "@/utils/helper";
 import { db } from "@/db";
 import { getUserByEmail } from "@/actions/get/getUserByEmail.action";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const { name, email, password } = body;
+  const body = await request.json();
+  const { name, email, password } = body;
 
-	let user = await getUserByEmail(email);
+  let user = await getUserByEmail(email);
 
-	if (user) {
-		return NextResponse.json({
-			message: "User already exists!",
-			status: 400,
-		});
-	}
+  if (user) {
+    return NextResponse.json({
+      message: "User already exists!",
+      status: 400,
+    });
+  }
 
-	const hashedPassword = saltAndHashPassword(password);
+  const hashedPassword = saltAndHashPassword(password);
 
-	await db.user.create({
-		data: {
-			email,
-			name,
-			password: hashedPassword,
-		},
-	});
+  await db.user.create({
+    data: {
+      email,
+      name,
+      password: hashedPassword,
+      cart: {
+        create: {},
+      },
+    },
+    include: {
+      cart: true,
+    },
+  });
 
-	return NextResponse.json({
-		status: 200,
-		message: "User created successfully!",
-	});
+  return NextResponse.json({
+    status: 200,
+    message: "User created successfully!",
+  });
 }
