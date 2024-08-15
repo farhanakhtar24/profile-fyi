@@ -10,7 +10,7 @@ const page = async (props: Props) => {
   const productCategories = await getCategories();
 
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div className="mx-auto grid h-full w-full max-w-screen-xl grid-cols-6 gap-5">
       {productCategories.map((category, idx) => {
         return <CategoryCard category={category} key={idx} />;
       })}
