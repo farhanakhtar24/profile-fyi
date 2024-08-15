@@ -10,7 +10,10 @@ export const getCategories = async () => {
   const res = await fetch("https://dummyjson.com/products/categories", {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application",
+    },
+    next: {
+      revalidate: 60,
     },
   });
 

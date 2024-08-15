@@ -4,7 +4,10 @@ export const getAllProducts = async () => {
   const res = await fetch("https://dummyjson.com/products?limit=100", {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application",
+    },
+    next: {
+      revalidate: 60,
     },
   });
 

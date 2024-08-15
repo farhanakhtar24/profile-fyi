@@ -19,24 +19,24 @@ interface MetaData {
   qrCode: string;
 }
 
-interface Product {
+export interface Iproduct {
   id: number;
   title: string;
   description: string;
   category: string;
   price: number;
-  discountPercentage: number;
+  discountPercentage?: number;
   rating: number;
   stock: number;
   tags: string[];
   brand: string;
   sku: string;
-  weight: number;
-  dimensions: Dimensions;
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  reviews: Review[];
+  weight?: number;
+  dimensions?: Dimensions;
+  warrantyInformation?: string;
+  shippingInformation?: string;
+  availabilityStatus?: string;
+  reviews?: Review[];
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta: MetaData;
@@ -45,7 +45,7 @@ interface Product {
 }
 
 export interface IproductList {
-  products: Product[];
+  products: Iproduct[];
   total: number;
   skip: number;
   limit: number;
