@@ -22,24 +22,24 @@ interface MetaData {
 export interface Iproduct {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   category: string;
   price: number;
   discountPercentage?: number;
-  rating: number;
+  rating?: number;
   stock: number;
-  tags: string[];
-  brand: string;
-  sku: string;
+  tags?: string[];
+  brand?: string;
+  sku?: string;
   weight?: number;
   dimensions?: Dimensions;
   warrantyInformation?: string;
   shippingInformation?: string;
   availabilityStatus?: string;
   reviews?: Review[];
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: MetaData;
+  returnPolicy?: string;
+  minimumOrderQuantity?: number;
+  meta?: MetaData;
   images: string[];
   thumbnail: string;
 }

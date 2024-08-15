@@ -14,5 +14,5 @@ export const getProductByCategory = async (category: string) => {
     },
   );
   const data = await res.json();
-  return data as IproductList[];
+  return data as IproductList;
 };

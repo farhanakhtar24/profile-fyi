@@ -8,7 +8,7 @@ import ProfileDropdown from "./ProfileDropdown";
 const Navbar = async () => {
   const session = await auth();
   return (
-    <nav className="sticky top-0 flex w-full items-center border-b bg-background">
+    <nav className="sticky top-0 z-50 flex w-full items-center border-b bg-background">
       <div className="mx-auto my-2 flex w-full max-w-screen-lg items-center justify-between">
         <Link className="font-bold" href="/">
           <Image
