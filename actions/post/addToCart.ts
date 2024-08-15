@@ -1,8 +1,9 @@
 "use server";
 
 import { db } from "@/db";
+import { Iproduct } from "@/interfaces/products";
 
-export const addToCart = async (productId: number, currentUserId: string) => {
+export const addToCart = async (product: Iproduct, currentUserId: string) => {
   try {
     const user = await db.user.findUnique({
       where: {
@@ -18,20 +19,21 @@ export const addToCart = async (productId: number, currentUserId: string) => {
       return;
     }
 
-    // add the productId to the user's cart
-    await db.cart.update({
+    const cart = await db.cart.update({
       where: {
         id: user.cart[0].id,
       },
       data: {
         cartItems: {
           push: {
-            productId: String(productId),
             quantity: 1,
+            product: product,
           },
         },
       },
     });
+
+    console.log(cart);
 
     console.log("Product added to cart");
 

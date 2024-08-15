@@ -72,9 +72,13 @@ export const {
   },
   events: {
     createUser: async ({ user }) => {
+      if (!user.id) {
+        return;
+      }
+
       await db.cart.create({
         data: {
-          userId: user.id!,
+          userId: user.id,
         },
       });
     },

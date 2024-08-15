@@ -17,7 +17,6 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   const { id, title, price, discountPercentage, stock, thumbnail } = product;
-  console.log("title:", product);
 
   const formattedPrice = price.toLocaleString("en-US", {
     style: "currency",
@@ -50,7 +49,7 @@ const ProductCard = ({ product }: Props) => {
           </CardContent>
           <CardFooter>
             {stock ? (
-              <AddToCartBtn productId={id} />
+              <AddToCartBtn product={product} />
             ) : (
               <p className="my-2 text-red-500">Out of Stock</p>
             )}
