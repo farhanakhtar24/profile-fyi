@@ -1,6 +1,6 @@
 import React from "react";
 import { getCategories } from "@/actions/get/getCategories";
-import CategoryCard from "./_components/CategoryCard";
+import CategoryCard from "../_components/CategoryCard";
 
 type Props = {};
 

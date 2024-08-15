@@ -21,7 +21,9 @@ const Navbar = async () => {
         </Link>
 
         <div className="flex items-center gap-x-5">
-          <Link href="/all-products">Products</Link>
+          <Link href="/product/category" className="font-semibold">
+            Categories
+          </Link>
           {!session?.user ? (
             <Link href="/auth">
               <Button className="bg-blue-600 text-white hover:bg-blue-500">
