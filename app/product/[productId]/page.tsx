@@ -1,15 +1,15 @@
 import React from "react";
 
 type Props = {
-	params: {
-		productId: string;
-	};
+  params: {
+    productId: string;
+  };
 };
 
 const page = ({ params }: Props) => {
-	const { productId } = params;
+  const { productId } = params;
 
-	return <div>{productId}</div>;
+  return <div>{productId}</div>;
 };
 
 export default page;

@@ -1,22 +1,21 @@
 import React from "react";
-import { getAllProducts } from "@/actions/get/getAllProducts";
+import { getCategories } from "@/actions/get/getCategories";
+import CategoryCard from "./_components/CategoryCard";
 
 type Props = {};
 
 export const dynamic = "force-dynamic";
 
 const page = async (props: Props) => {
-	const productList = await getAllProducts();
+  const productCategories = await getCategories();
 
-	console.log(productList);
-
-	return (
-		<div>
-			{productList.products.map((product) => {
-				return <div key={product.id}>{product.brand}</div>;
-			})}
-		</div>
-	);
+  return (
+    <div className="grid grid-cols-4 gap-5">
+      {productCategories.map((category, idx) => {
+        return <CategoryCard category={category} key={idx} />;
+      })}
+    </div>
+  );
 };
 
 export default page;

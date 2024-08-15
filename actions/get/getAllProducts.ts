@@ -1,7 +1,14 @@
 import { ProductList } from "@/interfaces/products";
-import axios from "axios";
 
 export const getAllProducts = async () => {
-	const res = await axios.get("https://dummyjson.com/products?limit=100");
-	return res.data as ProductList;
+	const res = await fetch("https://dummyjson.com/products?limit=100", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+	const json = await res.json();
+
+	return json as ProductList;
 };
