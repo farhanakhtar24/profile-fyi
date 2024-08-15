@@ -29,11 +29,14 @@ const Navbar = async () => {
             </Link>
           ) : (
             <>
+              <Link href="/product" className="font-semibold">
+                Products
+              </Link>
               <Link href="/product/category" className="font-semibold">
                 Categories
               </Link>
-              <Link href="/product" className="font-semibold">
-                Products
+              <Link href="/cart" className="font-semibold">
+                Cart
               </Link>
               <ProfileDropdown
                 name={session?.user?.name}
