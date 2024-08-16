@@ -6,14 +6,17 @@ import { revalidatePath } from "next/cache";
 import { getUserByEmail } from "./get/getUserByEmail.action";
 
 export const login = async (provider: string) => {
-  await signIn(provider, { redirectTo: "/" });
-  revalidatePath("/");
+  await signIn(provider, {
+    redirectTo: "/product/category",
+  });
+  revalidatePath("/product/category");
 };
 
 export const logout = async () => {
   await signOut({
     redirectTo: "/",
   });
+
   revalidatePath("/");
 };
 
@@ -28,7 +31,7 @@ export const loginWithCreds = async (email: string, password: string) => {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: "/",
+      redirectTo: "/product/category",
     });
   } catch (error: any) {
     if (error instanceof AuthError) {
@@ -43,5 +46,5 @@ export const loginWithCreds = async (email: string, password: string) => {
     throw error;
   }
 
-  revalidatePath("/");
+  revalidatePath("/product/category");
 };

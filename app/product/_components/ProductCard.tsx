@@ -13,9 +13,10 @@ import AddToCartBtn from "./AddToCartBtn";
 
 type Props = {
   product: Iproduct;
+  userId: string | undefined;
 };
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, userId }: Props) => {
   const { id, title, price, discountPercentage, stock, thumbnail } = product;
 
   const formattedPrice = price.toLocaleString("en-US", {
@@ -49,7 +50,7 @@ const ProductCard = ({ product }: Props) => {
           </CardContent>
           <CardFooter>
             {stock ? (
-              <AddToCartBtn product={product} />
+              <AddToCartBtn product={product} userId={userId} />
             ) : (
               <p className="my-2 text-red-500">Out of Stock</p>
             )}

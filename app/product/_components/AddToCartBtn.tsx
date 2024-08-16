@@ -2,15 +2,14 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { addToCart } from "@/actions/post/addToCart";
-import { useSession } from "next-auth/react";
 import { Iproduct } from "@/interfaces/products";
 
 type Props = {
   product: Iproduct;
+  userId: string | undefined;
 };
 
-const AddToCartBtn = ({ product }: Props) => {
-  const { data: session } = useSession();
+const AddToCartBtn = ({ product, userId }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const handleAddToCartClick = async (
@@ -19,17 +18,17 @@ const AddToCartBtn = ({ product }: Props) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (!session?.user?.id) {
+    if (!userId) {
       return console.log("User not logged in");
     }
 
     console.log("product", product);
-    console.log("session.user.id", session.user);
+    console.log("session.user.id", userId);
 
     const cartBody = {
       product: product,
       quantity: 1,
-      currentUserId: session.user.id,
+      currentUserId: userId,
     };
 
     await addToCart(cartBody);
