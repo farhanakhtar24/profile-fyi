@@ -46,14 +46,14 @@ type Product {
   brand                String?
   sku                  String?
   weight               Float?
-  dimensions           Dimensions?
+  dimensions           Dimensions
   warrantyInformation  String?
   shippingInformation  String?
   availabilityStatus   String?
   reviews              Review[]
   returnPolicy         String?
   minimumOrderQuantity Int?
-  meta                 MetaData?
+  meta                 MetaData
   images               String[]
   thumbnail            String
 }
