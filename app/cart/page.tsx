@@ -31,7 +31,7 @@ const page = async (props: Props) => {
         </CardHeader>
       </Card>
       <div className="flex h-full w-full gap-5">
-        {/* <Cart products={} /> */}
+        <Cart products={cartItems} />
         <Summary />
       </div>
     </div>

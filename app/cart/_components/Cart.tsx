@@ -9,8 +9,8 @@ type Props = {
   }[];
 };
 
-const Cart = (props: Props) => {
-  return <Card className="flex h-full w-[70%] p-5"> p5</Card>;
+const Cart = ({ products }: Props) => {
+  return <Card className="flex h-full w-[70%] flex-col p-5"></Card>;
 };
 
 export default Cart;
