@@ -2,6 +2,7 @@
 
 import { db } from "@/db";
 import { Iproduct } from "@/interfaces/products";
+import { revalidatePath } from "next/cache";
 
 export const addToCart = async ({
   product,
@@ -82,6 +83,8 @@ export const addToCart = async ({
     }
 
     console.log("Product added to cart");
+
+    revalidatePath("/cart");
 
     return;
   } catch (error) {
