@@ -51,6 +51,12 @@ export const addToCart = async ({
               }),
             ],
           },
+          total: {
+            increment: product.price * quantity,
+          },
+          totalItems: {
+            increment: quantity,
+          },
         },
       });
       console.log(cart);
@@ -65,6 +71,12 @@ export const addToCart = async ({
               quantity,
               product,
             },
+          },
+          total: {
+            increment: product.price * quantity,
+          },
+          totalItems: {
+            increment: quantity,
           },
         },
       });

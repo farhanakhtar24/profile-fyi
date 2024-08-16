@@ -79,6 +79,8 @@ export const {
       await db.cart.create({
         data: {
           userId: user.id,
+          total: 0,
+          totalItems: 0,
         },
       });
     },

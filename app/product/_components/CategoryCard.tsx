@@ -1,4 +1,5 @@
 import { Icategories } from "@/actions/get/getCategories";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
 
@@ -10,10 +11,12 @@ const CategoryCard = ({ category }: Props) => {
   const { name, slug } = category;
   return (
     <Link
-      className="flex h-auto w-full items-center justify-center rounded-md border bg-white p-10 text-center transition-all duration-300 hover:border-slate-300 hover:shadow-md"
+      className="flex h-full w-full flex-col items-center justify-center text-center"
       href={`/product/category/${slug}`}
     >
-      {name}
+      <Card className="flex h-full w-full flex-col items-center justify-center p-10 transition-all hover:border-slate-300 hover:shadow-md">
+        {name}
+      </Card>
     </Link>
   );
 };
