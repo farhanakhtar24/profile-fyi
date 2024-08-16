@@ -12,7 +12,7 @@ type Props = {
 
 const Cart = ({ products }: Props) => {
   return (
-    <Card className="flex h-full w-[70%] flex-col divide-y">
+    <Card className="flex h-[66vh] w-[70%] flex-col divide-y overflow-auto">
       {products.map((item) => {
         const { product, quantity } = item;
         return (

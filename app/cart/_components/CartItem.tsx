@@ -2,6 +2,7 @@ import { CardTitle } from "@/components/ui/card";
 import { Iproduct } from "@/interfaces/products";
 import Image from "next/image";
 import React from "react";
+import QuantitySelectorInput from "./QuantitySelectorInput";
 
 type Props = {
   product: Iproduct;
@@ -33,26 +34,30 @@ const CartItem = ({ product, quantity }: Props) => {
         />
         <div className="flex w-[85%] flex-col justify-between">
           <p className="text-xl font-semibold">{title}</p>
-          <p>Stock: {stock}</p>
-          <div className="flex items-baseline gap-3">
-            <CardTitle>{formattedPrice}</CardTitle>
-            {originalPrice > 0 && (
-              <p className="text-sm text-gray-500 line-through">
-                {originalPrice.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                })}
-              </p>
-            )}
-            {discountPercentage && (
-              <p className="text-sm font-semibold text-green-700">
-                {discountPercentage}% off
-              </p>
-            )}
+          <div className="flex w-full flex-col gap-2">
+            <p className="text-sm text-gray-600">In Stock: {stock}</p>
+            <div className="flex items-baseline gap-3">
+              <CardTitle>{formattedPrice}</CardTitle>
+              {originalPrice > 0 && (
+                <p className="text-sm text-gray-500 line-through">
+                  {originalPrice.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </p>
+              )}
+              {discountPercentage && (
+                <p className="text-sm font-semibold text-green-700">
+                  {discountPercentage}% off
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div></div>
+      <div>
+        <QuantitySelectorInput quantity={quantity} />
+      </div>
     </div>
   );
 };

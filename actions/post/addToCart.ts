@@ -16,42 +16,37 @@ export const addToCart = async ({
     console.log(
       `Adding ${quantity} of ${product.title} to the cart of user ${currentUserId}`,
     );
-    const user = await db.user.findUnique({
+    const cart = await db.cart.findFirst({
       where: {
-        id: currentUserId,
-      },
-      include: {
-        cart: true,
+        userId: currentUserId,
       },
     });
 
-    if (!user) {
-      console.log("User not found");
+    if (!cart) {
+      console.log("Cart not found");
       return;
     }
 
     // chcek if the product is already in the cart
-    const productInCart = user.cart[0].cartItems.find(
+    const productInCart = cart.cartItems.find(
       (item) => item.product.id === product.id,
     );
 
     if (productInCart) {
-      const cart = await db.cart.update({
+      const res = await db.cart.update({
         where: {
-          id: user.cart[0].id,
+          id: cart.id,
         },
         data: {
           cartItems: {
             set: [
-              ...user.cart[0].cartItems.map((item) => {
-                if (item.product.id === product.id) {
-                  return {
-                    quantity: item.quantity + quantity,
-                    product: item.product,
-                  };
-                }
-                return item;
-              }),
+              ...cart.cartItems.filter(
+                (item) => item.product.id !== product.id,
+              ),
+              {
+                quantity: productInCart.quantity + quantity,
+                product,
+              },
             ],
           },
           total: {
@@ -62,11 +57,11 @@ export const addToCart = async ({
           },
         },
       });
-      console.log(cart);
+      console.log(res);
     } else {
-      const cart = await db.cart.update({
+      const res = await db.cart.update({
         where: {
-          id: user.cart[0].id,
+          id: cart.id,
         },
         data: {
           cartItems: {
@@ -83,7 +78,7 @@ export const addToCart = async ({
           },
         },
       });
-      console.log(cart);
+      console.log(res);
     }
 
     console.log("Product added to cart");
