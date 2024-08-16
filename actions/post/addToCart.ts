@@ -47,7 +47,7 @@ export const addToCart = async ({
                 if (item.product.id === product.id) {
                   return {
                     quantity: item.quantity + quantity,
-                    product,
+                    product: item.product,
                   };
                 }
                 return item;
