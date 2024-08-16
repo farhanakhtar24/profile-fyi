@@ -26,7 +26,13 @@ const AddToCartBtn = ({ product }: Props) => {
     console.log("product", product);
     console.log("session.user.id", session.user);
 
-    await addToCart(product, session.user.id);
+    const cartBody = {
+      product: product,
+      quantity: 1,
+      currentUserId: session.user.id,
+    };
+
+    await addToCart(cartBody);
 
     // Add to cart logic here
     console.log("Add to cart clicked");
