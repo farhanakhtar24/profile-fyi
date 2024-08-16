@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <NextTopLoader />
           <Navbar />
-          <div className="min-h-[89vh] overflow-auto">
+          <div className="min-h-[89vh] overflow-auto bg-gray-100">
             <div className="mx-auto h-full w-full max-w-screen-xl py-10">
               {children}
             </div>

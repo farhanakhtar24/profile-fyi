@@ -26,12 +26,12 @@ const ProductCard = ({ product }: Props) => {
   return (
     <div className="relative flex h-full w-full flex-col">
       {!stock && (
-        <div className="absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center rounded-lg bg-black/50">
+        <div className="absolute left-0 top-0 z-10 flex h-full w-full cursor-not-allowed items-center justify-center rounded-lg bg-black/50">
           <p className="text-2xl font-semibold text-white">Out of Stock</p>
         </div>
       )}
       <Link className="h-full w-full" href={`/product/${id}`} target="_blank">
-        <Card className="flex h-full flex-col transition-all hover:border-slate-400 hover:shadow-md">
+        <Card className="flex h-full flex-col transition-all hover:border-slate-300 hover:shadow-md">
           <CardHeader className="h-full">
             <Image src={thumbnail} alt={title} width={999} height={999} />
             {/* <CardDescription>{description}</CardDescription> */}

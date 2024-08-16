@@ -1,5 +1,4 @@
 import { getCart } from "@/actions/get/getCart";
-import { getProductById } from "@/actions/get/getProductById";
 import { auth } from "@/auth";
 import React from "react";
 
@@ -17,8 +16,6 @@ const page = async (props: Props) => {
   if (!cart) {
     return <div>Cart not found</div>;
   }
-
-  console.log(cart);
 
   return <div>page</div>;
 };

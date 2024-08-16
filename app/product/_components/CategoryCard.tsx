@@ -10,7 +10,7 @@ const CategoryCard = ({ category }: Props) => {
   const { name, slug } = category;
   return (
     <Link
-      className="flex h-auto w-full items-center justify-center rounded-sm border border-slate-300 bg-gray-100 p-10 text-center transition-all duration-300 hover:bg-gray-200 hover:shadow-md"
+      className="flex h-auto w-full items-center justify-center rounded-md border bg-white p-10 text-center transition-all duration-300 hover:border-slate-300 hover:shadow-md"
       href={`/product/category/${slug}`}
     >
       {name}
