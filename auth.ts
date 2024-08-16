@@ -81,6 +81,7 @@ export const {
           userId: user.id,
           total: 0,
           totalItems: 0,
+          cartItems: [],
         },
       });
     },

@@ -7,14 +7,14 @@ interface Dimensions {
 interface Review {
   rating: number;
   comment: string;
-  date: string | Date;
+  date: Date;
   reviewerName: string;
   reviewerEmail: string;
 }
 
 interface MetaData {
-  createdAt: string | Date;
-  updatedAt: string | Date;
+  createdAt: Date;
+  updatedAt: Date;
   barcode: string;
   qrCode: string;
 }
@@ -22,24 +22,24 @@ interface MetaData {
 export interface Iproduct {
   id: number;
   title: string;
-  description?: string | null;
+  description?: string;
   category: string;
   price: number;
-  discountPercentage?: number | null;
-  rating?: number | null;
+  discountPercentage?: number;
+  rating?: number;
   stock: number;
-  tags?: string[] | null;
-  brand?: string | null;
-  sku?: string | null;
-  weight?: number | null;
-  dimensions?: Dimensions | null;
-  warrantyInformation?: string | null;
-  shippingInformation?: string | null;
-  availabilityStatus?: string | null;
-  reviews?: Review[] | null;
-  returnPolicy?: string | null;
-  minimumOrderQuantity?: number | null;
-  meta?: MetaData | null;
+  tags?: string[];
+  brand?: string;
+  sku?: string;
+  weight?: number;
+  dimensions?: Dimensions;
+  warrantyInformation?: string;
+  shippingInformation?: string;
+  availabilityStatus?: string;
+  reviews?: Review[];
+  returnPolicy?: string;
+  minimumOrderQuantity?: number;
+  meta?: MetaData;
   images: string[];
   thumbnail: string;
 }

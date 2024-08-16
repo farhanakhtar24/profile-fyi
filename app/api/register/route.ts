@@ -24,7 +24,11 @@ export async function POST(request: Request) {
       name,
       password: hashedPassword,
       cart: {
-        create: {},
+        create: {
+          total: 0,
+          totalItems: 0,
+          cartItems: [],
+        },
       },
     },
     include: {

@@ -13,6 +13,9 @@ export const addToCart = async ({
   currentUserId: string;
 }) => {
   try {
+    console.log(
+      `Adding ${quantity} of ${product.title} to the cart of user ${currentUserId}`,
+    );
     const user = await db.user.findUnique({
       where: {
         id: currentUserId,
