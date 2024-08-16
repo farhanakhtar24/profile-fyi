@@ -4,9 +4,10 @@ import React from "react";
 import Cart from "./_components/Cart";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import Summary from "./_components/Summary";
-import { Iproduct } from "@/interfaces/products";
 
 type Props = {};
+
+export const dynamic = "force-dynamic";
 
 const page = async (props: Props) => {
   const session = await auth();
