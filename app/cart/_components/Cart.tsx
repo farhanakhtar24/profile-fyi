@@ -13,12 +13,18 @@ type Props = {
 const Cart = ({ products }: Props) => {
   return (
     <Card className="flex h-[66vh] w-[70%] flex-col divide-y overflow-auto">
-      {products.map((item) => {
-        const { product, quantity } = item;
-        return (
-          <CartItem key={product.id} product={product} quantity={quantity} />
-        );
-      })}
+      {products.length === 0 ? (
+        <div className="flex h-full w-full items-center justify-center">
+          No Products in the cart
+        </div>
+      ) : (
+        products.map((item) => {
+          const { product, quantity } = item;
+          return (
+            <CartItem key={product.id} product={product} quantity={quantity} />
+          );
+        })
+      )}
     </Card>
   );
 };
