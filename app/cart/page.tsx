@@ -31,7 +31,7 @@ const page = async (props: Props) => {
       originalPrice = price / (1 - discountPercentage / 100);
     }
 
-    return acc + originalPrice;
+    return acc + originalPrice * item.quantity;
   }, 0);
 
   return (

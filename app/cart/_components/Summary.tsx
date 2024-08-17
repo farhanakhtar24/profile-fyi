@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import PlaceOrderBtn from "./PlaceOrderBtn";
 
 type Props = {
   discountedTotal: number | null;
@@ -56,9 +57,7 @@ const Summary = ({ discountedTotal, originaltotal, totalItem }: Props) => {
           </div>
         </div>
       </div>
-      <Button className="m-5 rounded-sm bg-orange-500 py-6 hover:bg-orange-400 hover:shadow">
-        Place Order
-      </Button>
+      <PlaceOrderBtn />
     </Card>
   );
 };

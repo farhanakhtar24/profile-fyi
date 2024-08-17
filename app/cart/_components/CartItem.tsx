@@ -3,13 +3,16 @@ import { Iproduct } from "@/interfaces/products";
 import Image from "next/image";
 import React from "react";
 import QuantitySelectorInput from "./QuantitySelectorInput";
+import { auth } from "@/auth";
 
 type Props = {
   product: Iproduct;
   quantity: number;
 };
 
-const CartItem = ({ product, quantity }: Props) => {
+const CartItem = async ({ product, quantity }: Props) => {
+  const session = await auth();
+
   const { thumbnail, price, title, stock, discountPercentage } = product;
 
   const formattedPrice = price.toLocaleString("en-US", {
@@ -56,7 +59,11 @@ const CartItem = ({ product, quantity }: Props) => {
         </div>
       </div>
       <div>
-        <QuantitySelectorInput quantity={quantity} />
+        <QuantitySelectorInput
+          quantity={quantity}
+          userId={session?.user?.id}
+          product={product}
+        />
       </div>
     </div>
   );

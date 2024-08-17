@@ -2,22 +2,37 @@
 import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
-import { addToCart } from "@/actions/post/addToCart";
+import { Iproduct } from "@/interfaces/products";
+import { updateCart } from "@/actions/post/updateCart";
 
 type Props = {
   quantity: number;
+  userId: string | undefined;
+  product: Iproduct;
 };
 
-const QuantitySelectorInput = ({ quantity }: Props) => {
+const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
 
-  const handleQuantity = (operation: "increment" | "decrement") => {
+  const handleQuantity = async (operation: "increment" | "decrement") => {
     if (operation === "increment") {
-      // addToCart({
-      // currentUserId,
-      // product,
-      // quantity,
-      // });
+      await updateCart({
+        operation,
+        quantity: 1,
+        product,
+        currentUserId: userId!,
+      });
+
+      setCurrentQuantity(currentQuantity + 1);
+    } else {
+      await updateCart({
+        operation,
+        quantity: 1,
+        product,
+        currentUserId: userId!,
+      });
+
+      setCurrentQuantity(currentQuantity - 1);
     }
   };
 
@@ -25,7 +40,7 @@ const QuantitySelectorInput = ({ quantity }: Props) => {
     <div className="flex w-[15%] items-center justify-center gap-2">
       <div
         className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:bg-gray-100"
-        onClick={() => handleQuantity("increment")}
+        onClick={() => handleQuantity("decrement")}
       >
         <FiMinus className="" />
       </div>
@@ -36,7 +51,7 @@ const QuantitySelectorInput = ({ quantity }: Props) => {
       />
       <div
         className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:bg-gray-100"
-        onClick={() => handleQuantity("decrement")}
+        onClick={() => handleQuantity("increment")}
       >
         <GoPlus />
       </div>
