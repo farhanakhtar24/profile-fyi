@@ -64,7 +64,7 @@ const Summary = async ({
           </div>
         </div>
       </div>
-      <PlaceOrderBtn userId={session?.user?.id} />
+      <PlaceOrderBtn userId={session?.user?.id} totalItem={totalItem} />
     </Card>
   );
 };

@@ -22,6 +22,11 @@ export const processOrder = async ({
 
     const { cartItems, total, totalItems } = cart;
 
+    if (cartItems.length === 0) {
+      console.log("Cart is empty");
+      return;
+    }
+
     const placedOrder = await db.order.create({
       data: {
         userId: currentUserId,
@@ -38,6 +43,7 @@ export const processOrder = async ({
         },
       },
     });
+
     console.log("Placed order: ", JSON.stringify(placedOrder, null, 2));
 
     await db.cart.update({
