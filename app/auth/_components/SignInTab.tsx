@@ -15,15 +15,19 @@ import { TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import GihubSignInBtn from "./GihubSignInBtn";
 import { loginWithCreds } from "@/actions/auth.action";
+import Spinner from "@/components/Spinner/Spinner";
 
 type Props = {};
 
 const SignInTab = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {
+    setLoading(true);
     await loginWithCreds(email, password);
+    setLoading(false);
   };
 
   return (
@@ -56,8 +60,13 @@ const SignInTab = (props: Props) => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-6">
-          <Button className="w-full" onClick={handleSignIn}>
+          <Button className="flex w-full gap-2" onClick={handleSignIn}>
             Sign In
+            {loading && (
+              <div className="h-5 w-5">
+                <Spinner />
+              </div>
+            )}
           </Button>
           <Separator />
           <GihubSignInBtn />

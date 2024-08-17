@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { signUp } from "@/actions/post/signUp.action";
+import Spinner from "@/components/Spinner/Spinner";
 
 type Props = {};
 
@@ -20,9 +21,12 @@ const SignUpTab = (props: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSignUp = async () => {
+    setLoading(true);
     await signUp(name, email, password);
+    setLoading(false);
   };
 
   return (
@@ -64,8 +68,18 @@ const SignUpTab = (props: Props) => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-6">
-          <Button className="w-full" onClick={handleSignUp}>
-            Sign Up
+          <Button
+            className="flex w-full gap-2"
+            onClick={handleSignUp}
+            disabled={!name || !email || !password || loading}
+          >
+            {loading ? (
+              <div className="h-5 w-5">
+                <Spinner />
+              </div>
+            ) : (
+              "Sign Up"
+            )}
           </Button>
         </CardFooter>
       </Card>
