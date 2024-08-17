@@ -24,6 +24,16 @@ const page = async (props: Props) => {
 
   const { cartItems, totalItems, total } = cart;
 
+  const originalTotal = cartItems.reduce((acc, item) => {
+    const { discountPercentage, price } = item.product;
+    let originalPrice = 0;
+    if (discountPercentage) {
+      originalPrice = price / (1 - discountPercentage / 100);
+    }
+
+    return acc + originalPrice;
+  }, 0);
+
   return (
     <div className="flex h-full w-full flex-col gap-5">
       <Card className="flex h-full w-full">
@@ -33,7 +43,11 @@ const page = async (props: Props) => {
       </Card>
       <div className="flex h-full w-full gap-5">
         <Cart products={cartItems} />
-        <Summary />
+        <Summary
+          discountedTotal={total}
+          totalItem={totalItems}
+          originaltotal={originalTotal}
+        />
       </div>
     </div>
   );
