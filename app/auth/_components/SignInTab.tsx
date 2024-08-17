@@ -60,12 +60,17 @@ const SignInTab = (props: Props) => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-6">
-          <Button className="flex w-full gap-2" onClick={handleSignIn}>
-            Sign In
-            {loading && (
+          <Button
+            className="flex w-full gap-2"
+            onClick={handleSignIn}
+            disabled={loading || !email || !password}
+          >
+            {loading ? (
               <div className="h-5 w-5">
                 <Spinner />
               </div>
+            ) : (
+              "Sign In"
             )}
           </Button>
           <Separator />
