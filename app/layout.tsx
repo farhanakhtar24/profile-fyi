@@ -4,6 +4,7 @@ import "./globals.css";
 import SessionContext from "@/context/SessionContext";
 import NextTopLoader from "nextjs-toploader";
 import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          <Toaster />
         </body>
       </html>
     </SessionContext>
