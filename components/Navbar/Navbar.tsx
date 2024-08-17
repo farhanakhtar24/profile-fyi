@@ -4,6 +4,7 @@ import logo from "@/public/Screenshot from 2024-08-14 19-43-39.png";
 import Image from "next/image";
 import ProfileDropdown from "./ProfileDropdown";
 import { Button } from "../ui/button";
+import SearchBar from "./SearchBar";
 
 const Navbar = async () => {
   const session = await auth();
@@ -20,7 +21,7 @@ const Navbar = async () => {
           />
         </Link>
 
-        <div className="flex items-center gap-x-5">
+        <div className="flex w-full items-center justify-end gap-5">
           {!session?.user ? (
             <Link href="/auth">
               <Button className="bg-blue-600 text-white hover:bg-blue-500">
@@ -29,6 +30,7 @@ const Navbar = async () => {
             </Link>
           ) : (
             <>
+              <SearchBar />
               <Link href="/product" className="font-semibold">
                 All Products
               </Link>
