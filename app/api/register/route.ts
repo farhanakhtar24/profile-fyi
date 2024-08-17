@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 // import { saltAndHashPassword } from "@/utils/helper";
-import { db } from "@/db";
+import { db } from "@/app/api/db";
 import { getUserByEmail } from "@/actions/get/getUserByEmail.action";
 
 export async function POST(request: Request) {

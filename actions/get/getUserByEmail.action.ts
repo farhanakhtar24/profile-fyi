@@ -1,14 +1,14 @@
-import { db } from "@/db";
+import { db } from "@/app/api/db";
 
 export const getUserByEmail = async (email: string) => {
-	try {
-		const user = await db.user.findUnique({
-			where: {
-				email,
-			},
-		});
-		return user;
-	} catch (error) {
-		return null;
-	}
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        email,
+      },
+    });
+    return user;
+  } catch (error) {
+    return null;
+  }
 };

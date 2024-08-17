@@ -3,7 +3,7 @@ import { Iproduct } from "@/interfaces/products";
 import Image from "next/image";
 import React from "react";
 import QuantitySelectorInput from "./QuantitySelectorInput";
-import { auth } from "@/auth";
+import { auth } from "@/app/api/auth";
 
 type Props = {
   product: Iproduct;

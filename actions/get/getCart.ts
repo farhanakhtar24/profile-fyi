@@ -1,4 +1,4 @@
-import { db } from "@/db";
+import { db } from "@/app/api/db";
 
 export const getCart = async (userId: string) => {
   try {

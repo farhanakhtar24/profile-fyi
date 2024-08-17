@@ -1,5 +1,5 @@
 import { getCart } from "@/actions/get/getCart";
-import { auth } from "@/auth";
+import { auth } from "@/app/api/auth";
 import React from "react";
 import Cart from "./_components/Cart";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";

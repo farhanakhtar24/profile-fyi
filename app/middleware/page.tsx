@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/app/api/auth";
 import React from "react";
 
 const Middleware = async () => {

@@ -1,7 +1,7 @@
 import { getProductByCategory } from "@/actions/get/getProductByCategory";
 import React from "react";
 import ProductCard from "../../_components/ProductCard";
-import { auth } from "@/auth";
+import { auth } from "@/app/api/auth";
 
 type Props = {
   params: {

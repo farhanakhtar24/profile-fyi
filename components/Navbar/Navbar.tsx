@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/app/api/auth";
 import Link from "next/link";
 import logo from "@/public/Screenshot from 2024-08-14 19-43-39.png";
 import Image from "next/image";
