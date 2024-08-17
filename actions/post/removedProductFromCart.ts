@@ -44,6 +44,18 @@ export const removedProductFromCart = async ({
       },
     });
 
+    // Check if the cart is empty and set total to zero if it is
+    if (res.totalItems === 0) {
+      await db.cart.update({
+        where: {
+          id: cart.id,
+        },
+        data: {
+          total: 0,
+        },
+      });
+    }
+
     console.log("updated cart ", JSON.stringify(res, null, 2));
 
     console.log("Product removed from the cart");
