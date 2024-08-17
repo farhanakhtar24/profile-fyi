@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import GihubSignInBtn from "./GihubSignInBtn";
+import GithubSignInBtn from "./GithubSignInBtn";
 import { loginWithCreds } from "@/actions/auth.action";
 import Spinner from "@/components/Spinner/Spinner";
 
@@ -74,7 +74,7 @@ const SignInTab = (props: Props) => {
             )}
           </Button>
           <Separator />
-          <GihubSignInBtn />
+          <GithubSignInBtn />
         </CardFooter>
       </Card>
     </TabsContent>

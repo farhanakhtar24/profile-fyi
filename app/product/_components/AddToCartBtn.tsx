@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { addToCart } from "@/actions/post/addToCart";
 import { Iproduct } from "@/interfaces/products";
+import Spinner from "@/components/Spinner/Spinner";
 
 type Props = {
   product: Iproduct;
@@ -18,12 +19,10 @@ const AddToCartBtn = ({ product, userId }: Props) => {
     event.preventDefault();
     event.stopPropagation();
 
+    setLoading(true);
     if (!userId) {
-      return console.log("User not logged in");
+      return console.error("User not logged in");
     }
-
-    console.log("product", product);
-    console.log("session.user.id", userId);
 
     const cartBody = {
       product: product,
@@ -33,20 +32,24 @@ const AddToCartBtn = ({ product, userId }: Props) => {
 
     await addToCart(cartBody);
 
-    // Add to cart logic here
+    setLoading(false);
+
     console.log("Add to cart clicked");
   };
 
   return (
     <Button
-      onClick={(e) => {
-        setLoading(true);
-        handleAddToCartClick(e);
-        setLoading(false);
-      }}
-      className="bg-cyan-800 hover:bg-cyan-600"
+      onClick={handleAddToCartClick}
+      className="w-28 bg-cyan-800 hover:bg-cyan-600"
+      disabled={loading}
     >
-      {loading ? "Adding to cart..." : "Add to cart"}
+      {loading ? (
+        <div className="h-5 w-5">
+          <Spinner />
+        </div>
+      ) : (
+        "Add to cart"
+      )}
     </Button>
   );
 };

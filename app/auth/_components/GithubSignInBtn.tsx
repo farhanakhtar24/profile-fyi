@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 type Props = {};
 
-const GihubSignInBtn = (props: Props) => {
+const GithubSignInBtn = (props: Props) => {
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {
@@ -36,4 +36,4 @@ const GihubSignInBtn = (props: Props) => {
   );
 };
 
-export default GihubSignInBtn;
+export default GithubSignInBtn;
