@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 import { Iproduct } from "@/interfaces/products";
@@ -22,8 +22,6 @@ const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
         product,
         currentUserId: userId!,
       });
-
-      setCurrentQuantity(currentQuantity + 1);
     } else {
       await updateCart({
         operation,
@@ -31,9 +29,9 @@ const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
         product,
         currentUserId: userId!,
       });
-
-      setCurrentQuantity(currentQuantity - 1);
     }
+
+    window.location.reload();
   };
 
   return (

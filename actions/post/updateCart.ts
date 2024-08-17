@@ -27,12 +27,12 @@ export const updateCart = async ({
       return;
     }
 
-    // chcek if the product is already in the cart
+    // Check if the product is already in the cart
     const productInCart = cart.cartItems.find(
       (item) => item.product.id === product.id,
     );
 
-    if (productInCart) {
+    if (operation === "decrement" && productInCart?.quantity === 1) {
       const res = await db.cart.update({
         where: {
           id: cart.id,
@@ -43,14 +43,47 @@ export const updateCart = async ({
               ...cart.cartItems.filter(
                 (item) => item.product.id !== product.id,
               ),
-              {
-                quantity:
-                  operation === "increment"
-                    ? productInCart.quantity + quantity
-                    : productInCart.quantity - quantity,
-                product,
-              },
             ],
+          },
+          total: {
+            decrement: product.price,
+          },
+          totalItems: {
+            decrement: 1,
+          },
+        },
+      });
+
+      console.log(res);
+
+      console.log("Product removed from the cart");
+
+      revalidatePath("/cart");
+
+      return res;
+    }
+
+    if (productInCart) {
+      const updatedCartItems = cart.cartItems.map((item) => {
+        if (item.product.id === product.id) {
+          return {
+            quantity:
+              operation === "increment"
+                ? productInCart.quantity + quantity
+                : productInCart.quantity - quantity,
+            product,
+          };
+        }
+        return item;
+      });
+
+      const res = await db.cart.update({
+        where: {
+          id: cart.id,
+        },
+        data: {
+          cartItems: {
+            set: updatedCartItems,
           },
           total: {
             [operation]: product.price * quantity,
