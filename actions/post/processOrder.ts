@@ -62,6 +62,7 @@ export const processOrder = async ({
     console.log("Order placed successfully");
 
     revalidatePath("/cart");
+    revalidatePath("/orders");
 
     return;
   } catch (error) {

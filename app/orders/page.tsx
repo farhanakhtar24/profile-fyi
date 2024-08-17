@@ -1,3 +1,4 @@
+import { getOrders } from "@/actions/get/getOrders";
 import { auth } from "@/auth";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
@@ -13,23 +14,13 @@ const page = async (props: Props) => {
     return <div>Not logged in</div>;
   }
 
-  // const cart = await getCart(session?.user?.id);
+  const orders = await getOrders(session?.user?.id);
 
-  // if (!cart) {
-  //   return <div>Cart not found</div>;
-  // }
+  if (!orders) {
+    return <div>Orders not found</div>;
+  }
 
-  // const { cartItems, totalItems, total } = cart;
-
-  // const originalTotal = cartItems.reduce((acc, item) => {
-  //   const { discountPercentage, price } = item.product;
-  //   let originalPrice = 0;
-  //   if (discountPercentage) {
-  //     originalPrice = price / (1 - discountPercentage / 100);
-  //   }
-
-  //   return acc + originalPrice * item.quantity;
-  // }, 0);
+  console.log("orders", JSON.stringify(orders, null, 2));
 
   return (
     <div className="flex h-full w-full flex-col gap-5">
@@ -38,6 +29,7 @@ const page = async (props: Props) => {
           <CardTitle>Orders</CardTitle>
         </CardHeader>
       </Card>
+      <Card className="flex h-[66vh] w-full flex-col overflow-auto"></Card>
     </div>
   );
 };
