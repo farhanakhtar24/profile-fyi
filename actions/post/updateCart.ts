@@ -54,7 +54,7 @@ export const updateCart = async ({
         },
       });
 
-      console.log(res);
+      console.log("updated cart ", JSON.stringify(res, null, 2));
 
       console.log("Product removed from the cart");
 
@@ -94,7 +94,7 @@ export const updateCart = async ({
         },
       });
 
-      console.log(res);
+      console.log("updated cart ", JSON.stringify(res, null, 2));
 
       console.log("Cart updated");
 

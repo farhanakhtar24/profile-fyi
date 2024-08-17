@@ -1,8 +1,9 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import PlaceOrderBtn from "./PlaceOrderBtn";
+import { Iproduct } from "@/interfaces/products";
+import { auth } from "@/auth";
 
 type Props = {
   discountedTotal: number | null;
@@ -10,7 +11,13 @@ type Props = {
   originaltotal: number;
 };
 
-const Summary = ({ discountedTotal, originaltotal, totalItem }: Props) => {
+const Summary = async ({
+  discountedTotal,
+  originaltotal,
+  totalItem,
+}: Props) => {
+  const session = await auth();
+
   const formattedPrices = {
     originaltotal: originaltotal.toLocaleString("en-US", {
       style: "currency",
@@ -57,7 +64,7 @@ const Summary = ({ discountedTotal, originaltotal, totalItem }: Props) => {
           </div>
         </div>
       </div>
-      <PlaceOrderBtn />
+      <PlaceOrderBtn userId={session?.user?.id} />
     </Card>
   );
 };

@@ -58,7 +58,7 @@ export const addToCart = async ({
           },
         },
       });
-      console.log(res);
+      console.log("updated cart ", JSON.stringify(res, null, 2));
     } else {
       const res = await db.cart.update({
         where: {
@@ -79,7 +79,7 @@ export const addToCart = async ({
           },
         },
       });
-      console.log(res);
+      console.log("updated cart ", JSON.stringify(res, null, 2));
     }
 
     console.log("Product added to cart");
