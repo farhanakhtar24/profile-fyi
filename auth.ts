@@ -2,7 +2,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import Github from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { db } from "./db";
 import { getUserByEmail } from "./actions/get/getUserByEmail.action";
 
@@ -40,10 +40,11 @@ export const {
           throw new Error("No user found.");
         }
 
-        const isMatch = bcrypt.compareSync(
-          credentials.password as string,
-          user?.password as string,
-        );
+        // const isMatch = bcrypt.compareSync(
+        //   credentials.password as string,
+        //   user?.password as string,
+        // );
+        const isMatch = credentials.password === user.password;
 
         if (!isMatch) {
           throw new Error("Incorrect password");

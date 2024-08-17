@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { saltAndHashPassword } from "@/utils/helper";
+// import { saltAndHashPassword } from "@/utils/helper";
 import { db } from "@/db";
 import { getUserByEmail } from "@/actions/get/getUserByEmail.action";
 
@@ -16,13 +16,13 @@ export async function POST(request: Request) {
     });
   }
 
-  const hashedPassword = saltAndHashPassword(password);
+  // const hashedPassword = saltAndHashPassword(password);
 
   await db.user.create({
     data: {
       email,
       name,
-      password: hashedPassword,
+      password,
       cart: {
         create: {
           total: 0,
