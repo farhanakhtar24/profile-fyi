@@ -50,7 +50,12 @@ const OrderListItem = ({ order }: Props) => {
         <div>Total Items: {totalItems}</div>
       </div>
       <div className="flex justify-between">
-        <div>Status: {orderStatus}</div>
+        <div>
+          Status:{" "}
+          <span className="font-bold uppercase text-green-600">
+            {orderStatus}
+          </span>
+        </div>
       </div>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-0">

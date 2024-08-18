@@ -10,7 +10,7 @@ export const getCart = async (userId: string) => {
 
     if (!cart) {
       console.log("Cart not found");
-      return;
+      return null;
     }
 
     return cart;

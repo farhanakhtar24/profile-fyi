@@ -2,6 +2,7 @@
 
 import { db } from "@/db";
 import { revalidatePath } from "next/cache";
+import { getCart } from "../get/getCart";
 
 export const processOrder = async ({
   currentUserId,
@@ -9,11 +10,7 @@ export const processOrder = async ({
   currentUserId: string;
 }) => {
   try {
-    const cart = await db.cart.findFirst({
-      where: {
-        userId: currentUserId,
-      },
-    });
+    const cart = await getCart(currentUserId);
 
     if (!cart) {
       console.log("Cart not found");

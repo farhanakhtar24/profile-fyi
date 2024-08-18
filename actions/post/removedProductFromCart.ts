@@ -3,6 +3,7 @@
 import { db } from "@/db";
 import { Iproduct } from "@/interfaces/products";
 import { revalidatePath } from "next/cache";
+import { getCart } from "../get/getCart";
 
 export const removedProductFromCart = async ({
   product,
@@ -14,11 +15,7 @@ export const removedProductFromCart = async ({
   quantity: number;
 }) => {
   try {
-    const cart = await db.cart.findFirst({
-      where: {
-        userId: currentUserId,
-      },
-    });
+    const cart = await getCart(currentUserId);
 
     if (!cart) {
       console.log("Cart not found");
