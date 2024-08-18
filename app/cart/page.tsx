@@ -41,7 +41,7 @@ const page = async (props: Props) => {
           <CardTitle>Cart</CardTitle>
         </CardHeader>
       </Card>
-      <div className="flex h-full w-full gap-5">
+      <div className="flex h-full w-full flex-col gap-5 md:flex-row">
         <Cart products={cartItems} />
         <Summary
           discountedTotal={total}

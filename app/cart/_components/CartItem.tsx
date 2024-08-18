@@ -27,16 +27,16 @@ const CartItem = async ({ product, quantity }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-5 p-5">
-      <div className="flex gap-5">
+    <div className="flex w-full flex-col gap-5 p-5">
+      <div className="flex flex-col gap-5 md:flex-row">
         <Image
           src={thumbnail}
           alt={title}
           width={999}
           height={999}
-          className="w-[15%]"
+          className="w-full md:w-[15%]"
         />
-        <div className="flex w-[85%] flex-col justify-between">
+        <div className="flex w-full flex-col justify-between md:w-[85%]">
           <p className="text-xl font-semibold">{title}</p>
           <div className="flex w-full flex-col gap-2">
             <p className="text-sm text-gray-600">In Stock: {stock}</p>

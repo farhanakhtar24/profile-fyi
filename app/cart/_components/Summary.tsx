@@ -33,7 +33,7 @@ const Summary = async ({
     }),
   };
   return (
-    <Card className="flex h-[66vh] w-[30%] flex-col justify-between">
+    <Card className="flex h-[66vh] w-full flex-col justify-between md:w-[30%]">
       <div className="flex flex-col divide-y">
         <div className="flex justify-between p-5">
           <p className="text-lg font-semibold text-black/80">PRICE DETAILS</p>

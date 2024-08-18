@@ -85,9 +85,9 @@ const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
         </div>
       ) : (
         <>
-          <div className="flex w-[15%] items-center justify-center gap-2">
+          <div className="flex w-[40%] items-center justify-start gap-2 xl:w-[15%] xl:justify-center">
             <button
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:bg-gray-100"
+              className="flex aspect-square h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:bg-gray-100"
               onClick={() => handleQuantity("decrement")}
             >
               <FiMinus />

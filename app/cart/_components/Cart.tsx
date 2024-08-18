@@ -12,7 +12,7 @@ type Props = {
 
 const Cart = ({ products }: Props) => {
   return (
-    <Card className="flex h-[66vh] w-[70%] flex-col divide-y overflow-auto">
+    <Card className="flex h-[66vh] w-full flex-col divide-y overflow-auto md:w-[70%]">
       {products.length === 0 ? (
         <div className="flex h-full w-full items-center justify-center">
           No Products in the cart

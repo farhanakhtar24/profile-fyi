@@ -17,7 +17,7 @@ const OrderListItem = ({ order }: Props) => {
   const { id, createdAt, total, totalItems, orderStatus, orderItems } = order;
   return (
     <div key={id} className="flex flex-col gap-3 border-b border-gray-300 p-5">
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between sm:flex-row">
         <div className="text-lg font-semibold text-gray-700">
           Order ID: #{id}
         </div>
@@ -39,7 +39,7 @@ const OrderListItem = ({ order }: Props) => {
           </span>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between sm:flex-row">
         <div className="text-xl font-bold">
           Total:{" "}
           {total.toLocaleString("en-US", {
@@ -49,7 +49,7 @@ const OrderListItem = ({ order }: Props) => {
         </div>
         <div>Total Items: {totalItems}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between sm:flex-row">
         <div>
           Status:{" "}
           <span className="font-bold uppercase text-green-600">
@@ -60,7 +60,7 @@ const OrderListItem = ({ order }: Props) => {
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-0">
           <AccordionTrigger>Products</AccordionTrigger>
-          <AccordionContent className="grid w-full grid-cols-2 gap-5">
+          <AccordionContent className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
             {orderItems.map((item, idx) => {
               const { quantity } = item;
               const { id, title, price, thumbnail, discountPercentage } =
@@ -75,13 +75,16 @@ const OrderListItem = ({ order }: Props) => {
                 originalPrice = price / (1 - discountPercentage / 100);
               }
               return (
-                <div className="flex gap-5 rounded border p-5" key={idx}>
+                <div
+                  className="flex flex-col gap-5 rounded border p-5 sm:flex-row"
+                  key={idx}
+                >
                   <Image
                     src={thumbnail}
                     alt={title}
                     width={999}
                     height={999}
-                    className="aspect-square h-auto w-[15%]"
+                    className="aspect-square h-auto w-full sm:w-[15%]"
                   />
                   <div className="flex w-[85%] flex-col justify-between">
                     <p className="text-xl font-semibold">{title}</p>
