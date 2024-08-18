@@ -15,8 +15,9 @@ const SearchBar = (props: Props) => {
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       onKeyDown={(e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && search) {
           router.push(`/product/search/${search}`);
+          setSearch("");
         }
       }}
     />

@@ -1,7 +1,8 @@
-import { getOrders } from "@/actions/get/getOrders";
 import { auth } from "@/auth";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
+import OrderList from "./_components/OrderList";
+import { getAllOrders } from "@/actions/get/getAllOrders";
 
 type Props = {};
 
@@ -14,13 +15,11 @@ const page = async (props: Props) => {
     return <div>Not logged in</div>;
   }
 
-  const orders = await getOrders(session?.user?.id);
+  const orders = await getAllOrders(session?.user?.id);
 
   if (!orders) {
     return <div>Orders not found</div>;
   }
-
-  console.log("orders", JSON.stringify(orders, null, 2));
 
   return (
     <div className="flex h-full w-full flex-col gap-5">
@@ -29,7 +28,7 @@ const page = async (props: Props) => {
           <CardTitle>Orders</CardTitle>
         </CardHeader>
       </Card>
-      <Card className="flex h-[66vh] w-full flex-col overflow-auto"></Card>
+      <OrderList orders={orders} />
     </div>
   );
 };
