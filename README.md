@@ -1,6 +1,6 @@
 # Profile-fyi MarketPlace
 
-This is a fully-featured e-commerce application built using Next.js, Tailwind CSS, Prisma, MongoDB, NextAuth, and Shadcn UI. The application allows users to browse products, add them to a cart, and manage their shopping cart. Authentication is implemented to ensure persistent sessions and cart data across user visits.
+This fully-featured, server-side e-commerce application is built using Next.js, Tailwind CSS, Prisma, MongoDB, NextAuth, and Shadcn UI. The application allows users to browse products, add them to a cart, and manage their shopping cart. Authentication is implemented to ensure persistent sessions and cart data across user visits.
 
 ## Features
 
