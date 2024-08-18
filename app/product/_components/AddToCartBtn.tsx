@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { addToCart } from "@/actions/post/addToCart";
 import { Iproduct } from "@/interfaces/products";
 import Spinner from "@/components/Spinner/Spinner";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 type Props = {
   product: Iproduct;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 const AddToCartBtn = ({ product, userId }: Props) => {
+  const { toast } = useToast();
+
   const [loading, setLoading] = useState(false);
 
   const handleAddToCartClick = async (
@@ -30,6 +34,13 @@ const AddToCartBtn = ({ product, userId }: Props) => {
     };
 
     await addToCart(cartBody);
+
+    toast({
+      title: "Product added to cart",
+      description: "Product has been successfully added to cart.",
+      variant: "success",
+      action: <ToastAction altText="Close">Close</ToastAction>,
+    });
 
     setLoading(false);
 

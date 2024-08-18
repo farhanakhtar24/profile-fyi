@@ -7,6 +7,8 @@ import { updateCart } from "@/actions/post/updateCart";
 import Spinner from "@/components/Spinner/Spinner";
 import { Button } from "@/components/ui/button";
 import { removedProductFromCart } from "@/actions/post/removedProductFromCart";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 type Props = {
   quantity: number;
@@ -15,6 +17,8 @@ type Props = {
 };
 
 const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
+  const { toast } = useToast();
+
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -28,12 +32,26 @@ const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
         product,
         currentUserId: userId!,
       });
+
+      toast({
+        title: "Product quantity increased.",
+        description: "Your product quantity has been successfully increased.",
+        variant: "black",
+        action: <ToastAction altText="Close">Close</ToastAction>,
+      });
     } else {
       await updateCart({
         operation,
         quantity: 1,
         product,
         currentUserId: userId!,
+      });
+
+      toast({
+        title: "Product quantity decreased.",
+        description: "Your product quantity has been successfully decreased.",
+        variant: "black",
+        action: <ToastAction altText="Close">Close</ToastAction>,
       });
     }
     setIsUpdating(false);
@@ -47,6 +65,12 @@ const QuantitySelectorInput = ({ quantity, product, userId }: Props) => {
       product,
       currentUserId: userId!,
       quantity,
+    });
+    toast({
+      title: "Product removed from cart.",
+      description: "Your product has been successfully removed from cart.",
+      variant: "black",
+      action: <ToastAction altText="Close">Close</ToastAction>,
     });
     setIsUpdating(false);
 

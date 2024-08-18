@@ -14,6 +14,8 @@ import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { signUp } from "@/actions/post/signUp.action";
 import Spinner from "@/components/Spinner/Spinner";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 type Props = {};
 
@@ -22,10 +24,17 @@ const SignUpTab = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleSignUp = async () => {
     setLoading(true);
     await signUp(name, email, password);
+    toast({
+      title: "Registration successful.",
+      description: "You have been successfully registered.",
+      variant: "success",
+      action: <ToastAction altText="Close">Close</ToastAction>,
+    });
     setLoading(false);
   };
 
