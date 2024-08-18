@@ -19,7 +19,7 @@ const page = async ({ params }: Props) => {
   console.log("productsList", productsList);
 
   return (
-    <div className="grid h-full w-full grid-cols-4 gap-5">
+    <div className="grid h-full w-full grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
       {productsList.products.length === 0 && (
         <div className="col-span-4 flex h-[60vh] items-center justify-center">
           No products found

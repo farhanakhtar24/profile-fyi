@@ -12,7 +12,7 @@ const page = async (props: Props) => {
   const productsList = await getAllProducts();
 
   return (
-    <div className="grid h-full w-full grid-cols-4 gap-5">
+    <div className="grid h-full w-full grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
       {productsList.products.map((prod, idx) => {
         return (
           <ProductCard key={idx} product={prod} userId={session?.user?.id} />
