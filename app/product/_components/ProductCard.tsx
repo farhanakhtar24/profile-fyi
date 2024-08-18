@@ -32,7 +32,7 @@ const ProductCard = ({ product, userId }: Props) => {
           <p className="text-2xl font-semibold text-white">Out of Stock</p>
         </div>
       )}
-      <Link className="h-full w-full" href={`/product/${id}`} target="_blank">
+      <div className="h-full w-full">
         <Card className="flex h-full flex-col transition-all hover:border-slate-300 hover:shadow-md">
           <CardHeader className="h-full">
             <Image src={thumbnail} alt={title} width={999} height={999} />
@@ -59,7 +59,7 @@ const ProductCard = ({ product, userId }: Props) => {
             )}
           </CardFooter>
         </Card>
-      </Link>
+      </div>
     </div>
   );
 };

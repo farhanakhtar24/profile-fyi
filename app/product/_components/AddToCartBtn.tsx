@@ -17,7 +17,6 @@ const AddToCartBtn = ({ product, userId }: Props) => {
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
-    event.stopPropagation();
 
     setLoading(true);
     if (!userId) {
