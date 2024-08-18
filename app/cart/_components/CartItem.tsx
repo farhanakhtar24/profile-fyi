@@ -13,7 +13,8 @@ type Props = {
 const CartItem = async ({ product, quantity }: Props) => {
   const session = await auth();
 
-  const { thumbnail, price, title, stock, discountPercentage } = product;
+  const { thumbnail, price, title, stock, discountPercentage, rating } =
+    product;
 
   const formattedPrice = price.toLocaleString("en-US", {
     style: "currency",
@@ -54,6 +55,9 @@ const CartItem = async ({ product, quantity }: Props) => {
                   {discountPercentage}% off
                 </p>
               )}
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-gray-500">{rating} ⭐</p>
+              </div>
             </div>
           </div>
         </div>

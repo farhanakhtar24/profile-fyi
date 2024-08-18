@@ -18,7 +18,9 @@ const OrderListItem = ({ order }: Props) => {
   return (
     <div key={id} className="flex flex-col gap-3 border-b border-gray-300 p-5">
       <div className="flex justify-between">
-        <div className="text-lg font-semibold">Order ID: #{id}</div>
+        <div className="text-lg font-semibold text-gray-700">
+          Order ID: #{id}
+        </div>
         <div className="flex gap-3">
           {/* // show time */}
           <span>
@@ -38,7 +40,7 @@ const OrderListItem = ({ order }: Props) => {
         </div>
       </div>
       <div className="flex justify-between">
-        <div>
+        <div className="text-xl font-bold">
           Total:{" "}
           {total.toLocaleString("en-US", {
             style: "currency",

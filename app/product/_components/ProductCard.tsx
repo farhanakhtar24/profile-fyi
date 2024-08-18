@@ -17,7 +17,8 @@ type Props = {
 };
 
 const ProductCard = ({ product, userId }: Props) => {
-  const { id, title, price, discountPercentage, stock, thumbnail } = product;
+  const { id, title, price, discountPercentage, stock, thumbnail, rating } =
+    product;
 
   const formattedPrice = price.toLocaleString("en-US", {
     style: "currency",
@@ -35,9 +36,8 @@ const ProductCard = ({ product, userId }: Props) => {
         <Card className="flex h-full flex-col transition-all hover:border-slate-300 hover:shadow-md">
           <CardHeader className="h-full">
             <Image src={thumbnail} alt={title} width={999} height={999} />
-            {/* <CardDescription>{description}</CardDescription> */}
           </CardHeader>
-          <CardContent className="space-y-1">
+          <CardContent className="space-y-2">
             <p className="text-black/80">{title}</p>
             <div className="flex items-baseline gap-3">
               <CardTitle>{formattedPrice}</CardTitle>
@@ -46,6 +46,9 @@ const ProductCard = ({ product, userId }: Props) => {
                   {discountPercentage}% off
                 </p>
               )}
+            </div>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-gray-500">{rating} ⭐</p>
             </div>
           </CardContent>
           <CardFooter>
