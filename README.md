@@ -100,7 +100,7 @@ This is a fully-featured e-commerce application built using Next.js, Tailwind CS
 
 4. Run database migrations:
    ```bash
-   npx prisma migrate dev
+   npx prisma generate
    npx prisma db push
    ```
 5. Start the development server:
