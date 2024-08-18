@@ -10,6 +10,11 @@ type Props = {
 const OrderList = ({ orders }: Props) => {
   return (
     <Card className="flex h-[66vh] w-full flex-col overflow-auto">
+      {orders.length === 0 && (
+        <div className="flex h-full w-full items-center justify-center">
+          No orders found
+        </div>
+      )}
       {orders.map((order) => {
         return <OrderListItem key={order.id} order={order} />;
       })}
