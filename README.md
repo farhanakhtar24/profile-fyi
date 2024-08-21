@@ -114,8 +114,8 @@ This fully-featured, server-side e-commerce application is built using Next.js, 
 ## Usage
 
 - **Product Browsing:** Navigate through the product listing page to browse and search for products.
-- **Cart Management:** Add items to the cart and manage them via the Cart Page.
-- **Order Placement:** Place an order and view order history on the Orders Page.
+- **Cart Management:** Add items to the cart and manage them via the Cart Page by clicking the user icon and going to the cart page.
+- **Order Placement:** Place an order and view the order history on the Orders Page.
 
 ## Evaluation Criteria
 
